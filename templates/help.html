@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+</head>
+<body>
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <h1 class="page-title">DNSDino</h1>
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="navbar">
+                <a href="{{url_for('index')}}">Home</a>
+                <a href="{{url_for('help')}}">Help</a>
+                <a href="{{url_for('learn')}}">Learn</a>
+                <a href="{{url_for('glossary')}}">Glossary</a>
+                <a href="{{url_for('credits')}}">Credits</a>
+            </div>
+
+        </div>
+    </div>
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="information readable-container">
+
+    <h2 class="pageheader headhighlight">Help</h2>
+    
+    
+    <h3>What is this website used for?</h3>
+    <p>Welcome to DNSDino!</p>
+
+    <p>DNSDino is a platform designed to provide users with detailed DNS and WHOIS information for any domain, while also serving as an educational resource on the foundational technologies that power the internet!</p>
+    
+    <p>DNSDino transforms domain analysis into a learning experience, making internet infrastructure more transparent and approachable.</p>
+    <hr>
+
+    <h3>What can you do on DNSDino?</h3>
+    <ul>
+        <li>Look up DNS records such as A, AAAA, MX, CNAME, and NS for any domain</li>
+        <li>Perform WHOIS lookups to find domain registration and ownership details</li>
+        <li>Understand how DNS and WHOIS work through simplified explanations</li>
+        <li>Use it as a learning companion for cybersecurity, networking, and OSINT basics</li>
+    </ul>
+    <hr>
+    <h3>How do I use it?</h3>
+    <p>To get started, simply enter a domain name into the search bar at the top of the page. DNSDino will fetch and display all available DNS and WHOIS data for that domain. You can explore each section to learn what the records mean and how they’re used. If you want to start learning, navigate to the Learn tab!</p>
+    <hr>
+    <h3>Who is it for?</h3>
+    <p>DNSDino is designed for students, cybersecurity enthusiasts, network administrators, ethical hackers, and anyone who wants to demystify how the web works beneath the surface.</p>
+    <hr>
+    <h3>Need more help?</h3>
+    <p>If you encounter any issues or want to suggest features, feel free to reach out via my LinkedIn found on the Credits Section. </p>
+    </div>
+
+    
+
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

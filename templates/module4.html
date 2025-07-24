@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wide World of DNS Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="moduleinfo">
+    <div class="information">
+    <h2 class="headhighlight">The Wide World of DNS Records</h2>
+
+<p>Alright, we've understood why DNS is our trusty phonebook. Now, let's peek inside. What exactly are these "entries" that connect domain names to IP addresses and other information? These entries are called DNS Records, and they are the building blocks of the Domain Name System.</p>
+
+<h3 class="headhighlight">Anatomy of a DNS Record</h3>
+<p>Think of a DNS record as a single line item in a database. Each record contains specific information about a domain name. While the exact fields can vary slightly depending on the record type, most share common components:</p>
+<ul>
+    <li><strong>Name:</strong> This is the domain name or hostname the record applies to (e.g., `www.example.com`, `mail.example.com`, or just `example.com`).</li><br>
+    <li><strong>Type:</strong> This indicates the type of record (e.g., A, AAAA, CNAME, MX, TXT). This tells the DNS resolver what kind of information to expect.</li><br>
+    <li><strong>Value/Data:</strong> This is the actual information the record provides. For an A record, it's an IPv4 address; for an MX record, it's a mail server hostname.</li><br>
+    <li><strong>TTL (Time-to-Live):</strong> This is the duration (in seconds) that a DNS resolver should cache this record before requesting a fresh copy from the authoritative name server.</li><br>
+    <li><strong>Class:</strong> Almost always "IN" for Internet, indicating the record belongs to the Internet class. You'll rarely see other classes in typical web browsing.</li><br>
+</ul>
+<p>If you've used DNSDino's primary tool from the homepage, you'll recognize a few of these!</p><br>
+
+<p>Understanding these basic components will help you interpret DNS lookup results and even configure your own domain's settings.</p>
+
+<h3 class="headhighlight">Common Record Types (A, AAAA, CNAME, MX)</h3>
+<p>These are the heavy lifters of the DNS, the records you'll encounter most frequently!</p>
+<ul>
+    <li><strong>A Record (Address Record):</strong>
+        <p>The most fundamental record type.(Coincidentally, it comes first in the site's glossary. Check that out later!) An A record maps a domain name or hostname to an IPv4 address. It's like saying, "If you're looking for `www.google.com`, go to `8.8.8.8`." Typing `8.8.8.8` in your browser will still take you to Google!</p>
+        <p>Example: `google.com IN A 8.8.8.8`</p>
+    </li><br>
+    <li><strong>AAAA Record (IPv6 Address Record):</strong>
+        <p>Similar to an A record, but it maps a domain name to an IPv6 address. As the internet transitions, AAAA records are becoming increasingly important. We need more unique IP addresses! And now with IPv6, we have a total of 340,282,366,920,938,463,463,374,607,431,768,211,456 new addresses! </p>
+        <p>Example: `google.com IN AAAA 2001:4860:4860::8888 `</p>
+    </li><br>
+    <li><strong>CNAME Record (Canonical Name Record):</strong>
+        <p>A CNAME record creates an alias from one domain name to another domain name. It says, "If you're looking for `blog.example.com`, actually go look up `example.com`." The CNAME record itself doesn't point to an IP address; it points to another domain name, which then has its own A or AAAA record.</p>
+        <p>This is useful for pointing to multiple hostnames (like `www.example.com` and `blog.example.com`) to the same server without having to update multiple A records if the IP address changes. A key rule: you cannot have a CNAME record for your root domain (e.g., `example.com`) if you have other records on that same root domain. Try finding a root domain using the tool on the homepage!</p>
+    </li><br>
+    <li><strong>MX Record (Mail Exchange Record):</strong>
+        <p>MX records specify the mail servers responsible for receiving email when it comes to a domain and their preference or priority ranking. When you send an email to `user@example.com`, your mail server performs an MX lookup for `example.com` to find out which server handles its mail.</p>
+        <p>MX records include a "preference" number, where lower numbers indicate higher priority. This allows you to set up primary and backup mail servers.</p>
+      
+        </p>
+    </li><br>
+</ul>
+
+<h3 class="headhighlight">Specialized Record Types (TXT, SRV, NS, SOA)</h3>
+<p>Beyond the common ones, several other record types serve specific, but equally important, functions. Here they are!</p>
+<ul>
+    <li><strong>TXT Record (Text Record):</strong>
+        <p>TXT records allow domain administrators to add arbitrary text strings to their DNS records. While they simply contain text, they are used for a wide variety of purposes, often for verification or security related policies.</p>
+        <p>Common uses include:</p>
+        <ul>
+            <li><strong>SPF (Sender Policy Framework):</strong> By listing authorized mail servers for a domain, email spoofing is prevented. </li><br>
+            <li><strong>DKIM (DomainKeys Identified Mail):</strong> Used for email authentication to verify the sender's identity.</li><br>
+            <li><strong>Domain Verification:</strong> Many services like Google, Microsoft, or other various hosting providers ask you to add a specific TXT record to prove that you own a domain.</li><br>
+        </ul>
+        <p>Example: `example.com IN TXT "v=spf1 include:_spf.google.com ~all"`</p>
+    </li><br>
+    <li><strong>SRV Record (Service Record):</strong>
+        <p>SRV records specify the location (hostname and port number) of servers, usually to run specific services. They are often used for  Voice Over IP (VoIP), instant messaging, and related services that require specific server and port information.</p>
+    </li><br>
+    <li><strong>NS Record (Name Server Record):</strong>
+        <p>To specify the authoritative name servers for a domain or subdomain, NS records are used. These are the records that tell the internet who is in charge of particular part of the DNS hierarchy. When you change your domain's name servers at your registrar, you will be updating these records.</p>
+
+      
+    </li><br>
+    <li><strong>SOA Record (Start of Authority Record):</strong>
+        <p>Every DNS zone must have exactly one SOA record which contains essential administrative information about the zone, such as the primary name server for the zone, the email address of the domain admin, the serial number of the zone file, and various timers for refreshing and retrying zone transfers.</p>
+        <p>This record is absoluely critical when it comes to ensuring that DNS servers manage and synchronize zone data accurately.</p>
+
+    </li><br>
+</ul>
+
+<h3 class="headhighlight">Using DNS Records for Email and Other Services</h3>
+<p>DNS is far more than just pointing domain names to websites. Its versatility allows it to direct traffic for a LOT of internet services:</p>
+<ul>
+    <li>MX records are the foundations of email delivery. Without them, your email server wouldn't know where to send mail for a specific domain, and you certainly wouldn't be receving any.</li><br>
+    <li>You can create A, AAAA, or CNAME records for subdomains to point them to different servers or services than your main domain. This large organizations 'cut up' their networks neatly.</li><br>
+    <li>TXT records are extensively used for email security (SPF, DKIM, DMARC) and for proving domain ownership to various online services such as Google Workspace, Microsoft 365, and more.</li><br>
+    <li>SRV records allow clients to discover the location of specific services (e.g., finding the server for a VoIP call or a specific game server).</li><br>
+    <li>NS records are used to delegate authority for subdomains. A company might delegate `dev.example.com` to a separate set of name servers controlled by their development team for further organization of their sites.</li><br>
+</ul>
+<p>The flexibility and extensibility of DNS records are what make the Domain Name System such a powerful and adaptable system, capable of supporting the vast and evolving landscape of the internet.</p>
+    </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

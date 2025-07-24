@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Do We Need DNS?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="moduleinfo">
+    <div class="information">
+    <h2 class="headhighlight">Why Do We Need DNS?</h2>
+
+    <p>In our last module, we took a long tour of how data travels across the internet using IP addresses, packets, and the moderation of routers and ISPs. We also talked about the idea that your computer needs an IP address to find a website. But here's the most important part of this ordeal: have you ever tried to remember a bunch of random numbers, like <code>172.217.160.142</code> or <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>? Probably not. That's where our main course, DNS, comes in.</p>
+
+    <h3 class="headhighlight">The Problem with IP Addresses</h3>
+    <p>Imagine every time you wanted to call a friend, you had to remember a long, complex phone number made up of random digits. You probably haven't ever had to do that. Not only that, but if your friend moved and got a new number, you'd have to find out their new number and update your pretty cramped mental directory. That sounds exhausting enough. Now, scale that up to the entire internet!</p>
+    <p>Every website you visit, every online service you use, and every email you send connects to a server that has a unique IP address. If we had to manually type in IP addresses for websites like <code>142.250.190.46</code> (Google's IP address on one of their servers) instead of <code>google.com</code>, the internet would be incredibly difficult to use. You'd probably be using things like Internet Phonebooks, which map IP Addresses to websites. Now that's what I would call frustrating.</p>
+    <p>Here are the main problems with relying solely on IP addresses for human interaction:</p>
+    <ul>
+        <li>Numbers are much harder for humans to memorize than meaningful names.</li>
+        
+        <li>An IP address like <code>104.26.15.118</code> tells you nothing about the content or use of the website it refers to.</li>
+        
+        <li>Server IP addresses can change. Websites might move to different hosting providers, or companies might reconfigure their networks. If an IP address changes, and you've memorized it, your "link" to that website is broken.</li>
+        
+        <li>Large websites often use multiple servers with different IP addresses to handle heavy traffic or provide backup in case of a server failing. How would you pick which IP address to use, or know when to switch? This is another major issue that must be solved, as massive datacentres with multiple servers are built all the time.</li>
+    </ul>
+    <p>This is where the genius of the DNS, or Domain Name System, truly saves our lives, and our brain's storage capacity.</p>
+
+    <h3 class="headhighlight">Human-Friendly vs. Machine-Friendly Names</h3>
+    <p>Our brains are fantastic at remembering words, phrases, and patterns. <code>facebook.com</code>, <code>wikipedia.org</code>, <code>amazon.in</code> and <code>google.com</code> are easy to remember, type, share and guess. (Try guessing some probable website names. You'll probably land on one.) They often give us a clue about the website's content. These are human-friendly names, also known as domain names.</p>
+    <p>On the other hand, computers and network devices (like routers) use numbers. They are incredibly efficient at processing and routing data based on the format of an IP address. These are machine-friendly names (IP addresses).</p>
+    <p>The challenge that we have to tackle as of now is bridging this gap. We need a system that allows us to use easy-to-remember domain names while still giving computers the numerical IP addresses they need to actually connect to.</p>
+
+    <h3 class="headhighlight">The Phonebook of the Internet</h3>
+    <p>The best way to understand the primary, essential function of DNS is to think of it as the internet's giant, distributed phonebook. (Hey, there IS an internet phonebook!)</p>
+    <p>If you wanted to call the "Papa Tomato's Pizza Palace," back in the 'good ol' days' of phonebooks, you'd look up "Papa Tomato's Pizza Palace" in the phonebook, find their name, and next to it, you'd see their phone number. You'd then dial the number.</p>
+    <p>DNS works exactly the same way:</p>
+    <ul>
+        <li>You know the "name" of the website you want to visit (e.g., <code>www.google.com</code>).</li>
+        
+        <li>Your computer asks the DNS "phonebook" system, "What's the IP address for <code>www.google.com</code>?"</li>
+        
+        <li>The DNS system looks it up and replies, "It's <code>142.250.190.46</code>."</li>
+        
+        <li>Your computer then takes that IP address and uses it to connect to the server hosting <code>www.google.com</code>.</li>
+    </ul>
+
+    <p>This analogy is powerful because it highlights the core task of DNS. That task is translating human-readable domain names into machine-readable IP addresses. An honorable profession.</p>
+
+    <h3 class="headhighlight">The Core Function of DNS: Name Resolution</h3>
+    <p>The process of translating a domain name into an IP address is called name resolution. This is the most crucial role of the Domain Name System.</p>
+    <p>Every time you click a link or type in a site address, a DNS lookup (or "resolution") occurs in the background. It's happening constantly. Millions of times per second across the globe, DNS resolutions take place so quickly you don't even notice it.</p>
+    <p>Without name resolution, your browser wouldn't know where to send its request for <code>www.google.com</code>. It's like trying to send a letter without knowing the recipient's street address.</p>
+    <p>Beyond simply giving back an IP address, DNS also provides:</p>
+    <ul>
+        <li>Redundancy. If a server's IP address changes, the DNS entry can be updated, and the rest of the internet will quickly learn the new address. Users don't need to know or do anything at all on their end.</li>
+        
+        <li>Load balancing is also graciously provided. For very popular websites, DNS can provide different IP addresses to different users across the globe, directing traffic to various servers to prevent any one server from getting overloaded.</li>
+        
+        <li>Mail Routing! DNS is wonderfully versatile. It also tells your email client which server handles email for a specific domain (e.g., <code>google.com</code>'s mail server).</li>
+        
+        <li>Service Discovery: It can point to servers for various services beyond web pages and email.</li>
+    </ul>
+
+
+    <p>In short, without DNS, the internet would transform into an obscure, difficult to operate network primarily for researchers and engineers who could manage direct IP connections. DNS is what makes the internet accessible and manageable for billions of people worldwide.</p>
+    <p>Now that we understand why DNS is so crucial, let's dive into how it actually works in our next module!</p>
+    </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

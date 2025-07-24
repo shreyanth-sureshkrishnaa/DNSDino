@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moduleTitle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo.svg') }}">
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="information">
+    <h2 class="headhighlight">Module Title</h2>
+    <h3>Subheading</h3>
+    <p>information</p>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

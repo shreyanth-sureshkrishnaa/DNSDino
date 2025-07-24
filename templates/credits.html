@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits</title>
+        <meta charset="UTF-8">
+    <title>Results for {{ domain }} - DNSDino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="information readable-container">
+    <h2 class="pageheader headhighlight">Credits</h2>
+    <p>This website was designed and developed by Shreyanth Suresh Krishnaa.</p>
+    <p>It would have been completely impossible to build this site without the the help of multiple resources. Here they are: </p>
+    <p>
+
+        Cloudflare<br>
+
+        DevDocs<br>
+
+        GeeksforGeeks<br>
+
+        GoDaddy<br>
+
+        MDN Web Docs<br>
+
+        Wikimedia Commons (Images)<br>
+
+        Wikipedia<br>
+    </p>
+    <hr>
+    <h5>Check out my socials!</h5>
+
+    <div id="socials">
+    <a href="https://www.linkedin.com/in/shreyanthsureshkrishnaa/">LinkedIn</a>
+    <a href="https://github.com/shreyanth-sureshkrishnaa">Github</a>
+    <a href="https://medium.com/@shreyanthssk">Medium</a>
+    </div>
+    <div>
+        <p>If you find any bugs, please report them by sending me a message on LinkedIn! Thank you for your support.</p>
+    </div>
+    </div>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

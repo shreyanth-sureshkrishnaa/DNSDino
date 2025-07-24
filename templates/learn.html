@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    
+
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+
+ 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <h1 class="page-title">DNSDino</h1>
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="learngrid">
+    <!--Lesson Chart-->
+    <div class="course information">
+        <h2 class="headhighlight">Comprehensive Course</h2>
+
+        <div class="module">
+            <h2>Making Your Way Around the Internet</h2>
+            <h3>What is a network?,
+
+            IP Addresses: The Internet's Postal System,
+
+            The Role of Routers and ISPs,
+
+            Packets and Protocols,
+
+            A Day in the Life of a Web Request</h3>
+            <form action="/module1" method="POST">
+                <button type="submit" class="pulse">Open Module</button>
+            </form>
+        </div>
+        <div class="module">
+            <h2>Why do we need DNS?</h2>
+            <h3>The Problem with IP Addresses,
+
+                Human-Friendly vs. Machine-Friendly Names,
+
+                The "Phonebook" of the Internet Analogy,
+
+                The Core Function of DNS: Name Resolution,
+
+                The Consequences of a World Without DNS</h3>
+            <form action="/module2" method="POST">
+                <button type="learn" class="pulse">Open Module</button>
+            </form>
+        </div>
+        <div class="module">
+            <h2>DNS: The Domain Name System</h2>
+            <h3>The DNS Hierarchy (Root, TLD, Authoritative),
+
+                The DNS Resolution Process (Recursive vs. Iterative Queries),
+
+                The Role of a DNS Resolver,
+
+                DNS Caching and Time-to-Live (TTL),
+
+                Key Components of a DNS Message</h3>
+            <form action="/module3" method="POST">
+                <button type="learn" class="pulse">Open Module</button>
+            </form>
+        </div>
+        <div class="module">
+            <h2>The Wide World of DNS Records</h2>
+            <h3>Anatomy of a DNS Record,
+
+                Common Record Types (A, AAAA, CNAME, MX),
+
+                Specialized Record Types (TXT, SRV, NS, SOA),
+
+                How to Read a DNS Record,
+
+                Using DNS Records for Email and Other Services</h3>
+            <form action="/module4" method="POST">
+                <button type="learn" class="pulse">Open Module</button>
+            </form>
+        </div>
+        <div class="module">
+            <h2>The WHOIS Protocol</h2>
+            <h3>What is WHOIS?,
+
+                Who is WHOIS for? (Registrants, Registrars, and the Public),
+
+                Understanding a WHOIS Lookup Result,
+
+                Privacy and the WHOIS Protocol,
+
+                WHOIS as a Troubleshooting Tool,</h3>
+            <form action="/module5" method="POST">
+                <button type="learn" class="pulse">Open Module</button>
+            </form>
+        </div>
+        
+    </div>
+    </div>
+
+
+
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

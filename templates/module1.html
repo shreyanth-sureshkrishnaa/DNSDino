@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making Your Way Around the Internet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="moduleinfo">
+    <div class="information">
+    <h2 class="headhighlight">Making Your Way Around the Internet</h2>
+
+    <p>Have you ever wondered what actually happens when you type in a website address or send a message to a friend online? You'be probably already been told that some fancy tech stuff happens. But underneath all that digital machinery is a super-organized system that makes it all possible. Think of this module as your backstage pass to understanding the fundamental pieces that connect us all.</p>
+    <h3 class="headhighlight">The Internet</h3>
+    <p>The internet is arguably the most important resource ever created. It represents not just the largest collection of human knowledge, creativity, and connectivity ever assembled, but the first truly universal resource that transcends geography, economics, and other barriers to information. From academic papers on Quantum Superposition to videos of cats rolling over, it’s on the internet. And as a result of the human incapacity to truly grasp huge numbers, it’s quite easy to let the sheer size of the internet go right over our heads.
+    The internet contains is estimated to be composed of about 1.7 to 2 billion websites, though only about 400 million are considered active. Beyond websites, there are trillions of individual web pages indexed by search engines like Google. The "deep web" - content not indexed by search engines like private databases, password-protected sites, and internal company pages is estimated to be hundreds of times larger than the visible web. To access the deep web, different tools are required. That’s a story for another day.<br><br>
+    The internet processes over 5 billion search queries daily, handles roughly 300 billion emails per day, and stores an almost incomprehensible amount of data across millions of servers worldwide.</p>
+    <img src="static/netusage.png" alt="Network Usage 2021" style="display: block; margin: auto; border: 5px solid #00b894;" height="600px" width="700px">
+
+    <p><br>To further illustrate just how massive all that data is, if you spent one second quickly glancing on every email sent on a given day, you’d be staring for 9512 years. 
+    Despite this vast digital universe, research consistently shows that people's internet habits are remarkably narrow. The average person regularly visits fewer than 100 websites, and 85% of online time is spent on just 10-15 websites. That’s a microscopic speck of dust on the vast shores of the internet ocean. 
+    So, how do these massive networks even operate? How is it that we’re able to find exactly what it is that we’re looking for on them? 
+    </p>
+    <h3 class="headhighlight">What is a Network?</h3>
+    <p>Imagine you and your friend want to share a toy. You could just pass it back and forth, but that'll get boring fast. Now, imagine a whole group of kids in a classroom wanting to share different toys. You'd probably set up some rules for who gets what, and maybe even a designated place where people can place toys to share. </p>
+    <p>In the digital world, a network is the same idea. It's a collection of two or more connected devices that can share resources and information. These devices could be computers, phones, tablets, smart TVs, or even those dystopian smart fridges. The "connection" can be physical, like cables (think Ethernet cords), or wireless, like Wi-Fi.</p>
+    <p>Your home probably has a small network: your phone connected to your Wi-Fi router, your laptop connected to the same router, and maybe a smart speaker. They can all talk to each other and share your internet connection. Now, scale that up exponentially and you get the internet – the biggest network of all. Check out the image by the top of the page which shows you internet usage worldwide. </p>
+
+    <h3 class="headhighlight">IP Addresses: The Internet's Postal System</h3>
+    <p>Great, now you've got a bunch of devices on a network. How do they find each other? If you want to send a letter to your friend, you need their home address. The internet works in a very similar way, but instead of street addresses, we use IP addresses.</p>
+    <p>"IP" stands for Internet Protocol. An IP address is a unique numerical label assigned to every device connected to a computer network that uses the Internet Protocol for communication. Think of it as a house address for your device on the internet. Every device has a unique IP address, but you can change your IP address using amazing tools called VPNs.</p>
+    <p>You've probably seen IP addresses before; they look something like <code>192.168.1.1</code> or <code>172.217.160.142</code>. These are called IPv4 addresses, the most common type. They consist of four sets of numbers, separated by dots. Each set can range from 0 to 255.</p>
+    <p>There's also a newer, longer version called IPv6, which looks much more complex (like <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>). We're switching to IPv6 because we're running out of IPv4 addresses – there are just so many devices connecting to the internet now, as human progess and development skyrockets.</p>
+    <p>When your computer wants to talk to a website server, it needs that server's IP address, just like you need a friend's address to send them a letter.</p>
+
+    <h3 class="headhighlight">The Role of Routers and ISPs</h3>
+    <p>So, how do all these IP addresses connect across the globe? That's where routers and ISPs come in.</p>
+    <ul>
+        <li><strong>Routers:</strong> Imagine your home router. It's not merely a Wifi box, it's a moderator for your home network. When you send data from your phone, the router directs it to the right place. But routers do more than just manage your home network. Massive, powerful routers exist all over the internet, acting as intelligent guides. Their job is to figure out the best path for data to travel from one network to another. They look at the destination IP address and figure out which "path" (or network segment) the data should take to get there efficiently. Without routers, data would just wander aimlessly through the massive networks of the internet!</li><br>
+        <li><strong>ISPs (Internet Service Providers):</strong> Your ISP is the company that gives you access to the internet. Think of them as the main highways connecting your local roads to the vast network of the internet. Companies like Xfinity, AT&T, Airtel, or local providers in your area are ISPs. They own massive network infrastructure: the cables, fiber optics, and powerful routers that form the backbone of the internet and allow your home network to connect to websites and services worldwide. When you come "online," you're essentially connecting to your ISP's network, which then connects you to the rest of the internet.</li>
+    </ul>
+
+    <h3 class="headhighlight">Packets and Protocols</h3>
+    <p>When you send a text message on an instant messaging app, watch a video on YouTube, or load a webpage, that information isn't sent as one giant, continuous stream. That would be like exceptionally demanding, like mailing a whole dictionary in an envelope. Instead, all data sent over the internet is broken down into tiny, manageable chunks called packets.</p>
+    <p>Imagine you're sending a detailed instruction manual. You'd break it into pages, number them, and put them into multiple envelopes. Each envelope would also have your return address and the recipient's address.</p>
+    <p>Internet packets work similarly:</p><br>
+    <ul>
+        <li>Each packet contains a small piece of the total data.</li>
+        <li>It also includes "header" information, like the source IP address (which is the IP of your device), the destination IP address (the website server), the packet's sequence number (For example, "the 7th packet of 10"), and error-checking information.</li>
+        <li>These packets travel independently across the internet, potentially taking different routes.</li>
+        <li>When they reach their destination, they are reassembled in the correct order to recreate the original message or data. If a packet gets lost or arrives corrupted, the system knows to request a resend so it can attempt reorganization again.</li>
+    </ul>
+    <p>How do all these devices and packets know how to talk to each other, and communicate effectively? They follow protocols. A protocol is simply a set of rules or a standard way of doing things. It's like a language that computers speak to ensure they understand each other.</p>
+    <p>You've already met one important protocol: IP (Internet Protocol), which defines how addresses work and how packets are routed. But there are many others:</p>
+    <ul>
+        <li><strong>TCP (Transmission Control Protocol):</strong> Often paired with IP (forming TCP/IP). TCP is responsible for making sure packets arrive reliably and in the correct order. If a packet goes missing, TCP requests it again. It's a service that ensures your packets actually arrive and in good condition.</li>
+        <li><strong>HTTP (Hypertext Transfer Protocol):</strong> This is the protocol that powers the World Wide Web. When you type <code>http://</code> or <code>https://</code> in your browser, you're telling it to use this protocol to fetch web pages for you.</li>
+        <li><strong>FTP (File Transfer Protocol):</strong> Used for transferring files between computers.</li>
+        <li><strong>SMTP (Simple Mail Transfer Protocol):</strong> Used for sending emails.</li>
+    </ul>
+    <p>These protocols work together in layers, making sure everything runs smoothly from sending the data to interpreting it at the other end. They're essential to the internet!</p>
+
+    <h3 class="headhighlight">The Internet vs. the World Wide Web</h3>
+    <p>This is a common point of confusion, and it's super important to clear it up before we proceed! Many people use "the internet" and "the World Wide Web" interchangeably, but they're actually quite different things.</p>
+    <img src="static/wwwinternet.png" alt="Network Usage 2021" style="display: block; margin: auto; border: 5px solid #00b894;" height="600px" width="700px">
+    <ul>
+        <li><strong>The Internet:</strong> Think of the internet as the gigantic global infrastructure. It's the physical cables, the underwater cables, the wireless signals, the routers, the servers, and all the protocols that allow devices worldwide to connect and exchange data. It's the <em>hardware</em> and the <em>basic rules of communication</em>. It existed before the World Wide Web. Other services run on the internet besides the web, like email, online gaming, file sharing, and instant messaging.</li>
+        <li><strong>The World Wide Web (often just called "the Web"):</strong> This is a <em>service</em> that runs <em>on top of</em> the internet. It's a vast collection of interconnected documents and other web resources, linked by hyperlinks and URLs (Uniform Resource Locators, like website addresses). The Web is accessed thorugh web browsers using the HTTP/HTTPS protocol. When you click on links, visit websites, or browse for information, you're using the World Wide Web. The intranet, is a local or restricted communications network, especially a private network created using World Wide Web software.</li>
+    </ul>
+    <p>So, the internet is the major highway, and the World Wide Web is one of the main types of traffic that uses that highway. You can have the internet without the Web, but you can't have the Web without the internet!</p>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

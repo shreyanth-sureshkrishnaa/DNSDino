@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Domain Name System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="information">
+    <div class = moduleinfo>
+    <h2 class="headhighlight">The Domain Name System</h2>
+
+    <p>We have already established why DNS is absolutely essential for today's busy cosmopolitan internet. Now, let's explore how this phenomenal system actually works. Think of DNS as a massive, global, distributed database that translates human-friendly domain names into machine-friendly IP addresses. It’s a complex amalgam of various components working together.</p>
+
+    <h3 class="headhighlight">The DNS Hierarchy (Root, TLD, Authoritative)</h3>
+    <p>Imagine a huge inverted tree, or tree-like structure. At the very top is the root, and then branches spread out from the root, getting more specific as we move our way down. The DNS system is structured in a similar hierarchical manner. This design is crucial when it comes to its scalability and integity-centric frame, preventing any single point of failure.</p>
+    <ul>
+        <li>At the very top of the DNS hierarchy are the Root Name Servers. There are 13 logical root servers (named A through M), operated by different organizations, with hundreds of physical servers distributed using something called Anycast technology, which we'll get to later. These servers don't know the IP address for every website, but they know where to find the servers when it comes to Top-Level Domains (TLDs). They point to the right phonebook for a specific country or type of organization.</li><br>
+        <li>Just below the Root Servers are the TLD Name Servers. These servers manage specific domain extensions like `.com`, `.org`, `.net`, `.gov`, or country codes, like`.in` (India), `.uk` (United Kingdom), and quite a bit more. When a Root Server receives a query for `www.example.com`, it directs the query straigh to the `.com` TLD server. The TLD server then knows which authoritative name server is responsible for `example.com`.</li><br>
+        <li>Authoritative Name Servers are the final authority with respect to a specific domain name (like `google.com` or `example.org`). An authoritative name server contains the actual DNS records for that domain. When a TLD server directs a query to an authoritative name server, this server provides the definitive answer: the IP address that corresponds to the requested domain name. Every domain you register has at least two authoritative name servers for redundancy.</li><br>
+    </ul>
+
+
+    <h3 class="headhighlight">The DNS Resolution Process (Recursive vs. Iterative Queries)</h3>
+    <p>When you type a domain name into your browser, a process known as the DNS resolution process begins. This involves different types of queries:</p>
+    <ul>
+        <li><strong>Recursive Query:</strong> This is the first, initial query made by your computer (or more accurately, your local DNS resolver) to a DNS server. In a recursive query, the client expects a full answer from the server. If the server doesn't have the answer, it's obligated to go find it by querying other DNS servers. Think of it like asking an experienced librarian where to find a book in a large library. They'll tell you everything - which part of the libary it's found, which shelf, etc. A complete guide.</li><br>
+        <li><strong>Iterative Query:</strong> This is what most DNS servers (Root, TLD, Authoritative) do amongst themselves. When a DNS server receives an iterative query, it provides the best answer it has. If it doesn't have the full answer, it refers the querying server to another DNS server that is "closer" to the answer. It's like asking someone for directions, and they say, "I don't know the exact where that house is, but I can tell you which street it's on." You then take that new information and ask someone else on that street.</li><br>
+    </ul>
+    <p>The DNS resolver (which we'll discuss next) orchestrates this entire process, starting with a recursive query and then performing iterative queries until it gets the definitive answer.</p>
+
+    <h3 class="headhighlight">The Role of a DNS Resolver</h3>
+    <p>The DNS resolver (also known as a recursive resolver or recursive name server) is the first stop in a DNS query and acts as the intermediary between your device and the rest of the DNS system. Your ISP typically provides you with the IP address of their DNS resolver, or you might configure your device to use a public DNS resolver like Google DNS (<code>8.8.8.8</code>) or Cloudflare DNS (<code>1.1.1.1</code>).</p>
+    <p>When you type `www.wikipedia.com` into your browser:</p>
+    <ol>
+        <li>Your computer sends a recursive query to its configured DNS resolver.</li><br>
+        <li>The resolver checks its cache. If it has a recent record for `www.wikpedia.com`, it immediately returns the IP address to your computer.</li><br>
+        <li>If not in cache, the resolver begins iterative queries:<br>
+            <ul>
+                <li>It queries a Root Name Server, asking "Where can I find `.com`?"</li><br>
+                <li>The Root Server replies with the IP address of a TLD Name Server for `.com`.</li><br>
+                <li>The resolver then queries the `.com` TLD server, asking "Where can I find `amazon.com`?"</li><br>
+                <li>The TLD server replies with the IP address of the Authoritative Name Server for `amazon.com`.</li><br>
+                <li>Finally, the resolver queries the Authoritative Name Server for `amazon.com`, asking "What is the IP address for `www.amazon.com`?"</li><br>
+                <li>The Authoritative Name Server provides the definitive IP address.</li><br>
+            </ul>
+        </li>
+        <li>The resolver caches the answer and sends the IP address back to your computer.</li><br>
+        <li>Your computer then uses this IP address to connect directly to the website server. Effective!</li><br>
+
+        <img src="static/architecture.png" style="display: block; margin: auto; border: 5px solid #00b894;" height="600px" width="700px">
+    </ol>
+
+    <h3 class="headhighlight">DNS Caching and Time-to-Live (TTL)</h3>
+    <p>Performing all those queries for each and every single website visit would be incomprehensibly slow and inefficient. This is why DNS uses caching extensively.</p>
+    <ul>
+        <li>DNS Caching: DNS resolvers temporarily store answers to recent DNS queries. When you visit a website for the second time, or if several people on your network visit the same site, the resolver can usually provide the IP address from its cache right away. This saves a lot of time.</li><br>
+        <li>Every DNS record comes with a "Time-to-Live" value, which is typically measured in seconds. The TTL tells a caching DNS resolver how long it should store that record in its cache before it needs to query the authoritative name server again for a fresh copy.
+            <ul>
+                <li>A short TTL (e.g., 300 seconds or 5 minutes) means changes to the DNS record will traverse quickly across the internet. This is useful if you expect to change your server's IP address soon.</li><br>
+                <li>A long TTL (e.g., 86400 seconds or 24 hours) means resolvers will cache the record for a longer period, reducing the load on authoritative name servers as well as potentially speeding up repeated lookups for users. However, this comes with a caveat: changes to the record will take longer to propagate globally.</li><br>
+            </ul>
+        </li><br>
+    </ul>
+    <p>Understanding TTL is crucial when it comes to managing your own domain names, as it directly impacts how quickly changes you make to your DNS records become active worldwide.</p>
+    <img src="static/dnsschema.png" style="display: block; margin: auto; border: 5px solid #00b894;" height="600px" width="700px">
+    <h3 class="headhighlight">Key Components of a DNS Message</h3>
+    <p>When DNS servers communicate, they exchange DNS messages. These messages are structured in a specific format defined by the DNS protocol. While you don't need to memorize every byte, understanding the main sections helps you understand how queries and responses work:</p>
+    <ul>
+        <li><strong>Header Section:</strong> Contains flags and codes that specify the type of message, ie, a query or response, whether it's a recursive query, if the response is authoritative, and the number of entries in the other sections.</li><br>
+        <li><strong>Question Section:</strong> In a query, this section specifies the domain name being looked up as well as the type of record being requested (For example, a record for an IPv4 address).</li><br>
+        <li><strong>Answer Section:</strong> In a response, this section contains the resource records that answer the given question. For example, if you asked for `www.amazon.com` is a record, the answer section would contain its IP address and TTL.</li><br>
+        <li><strong>Authority Section:</strong> In a response, this section provides information about the authoritative name servers for the domain, guiding the resolver to further queries if necessary.</li><br>
+        <li><strong>Additional Section:</strong> This section contains other RRs that might be helpful but aren't mandatory to answer the primary query. For example, it might include the IP addresses of the authoritative name servers listed in the Authority section, saving the resolver an extra lookup.</li><br>
+    </ul>
+    <p>This structured messaging allows DNS servers to efficiently request and provide information, forming the backbone of name resolution.</p>
+    </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

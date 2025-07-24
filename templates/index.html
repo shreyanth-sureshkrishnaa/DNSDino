@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DNSDino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+
+
+    <div>
+        <span id="typed-text"></span>
+    </div>
+
+    <div class="centralimage">
+        <img class="indeximage" src="{{ url_for('static', filename='dinoserver.svg') }}">
+    </div>
+    <div class="center">
+        <h2 class="query gradient-text">Enter a domain name!</h2>
+    </div>
+
+  
+    <div class="center">
+        <form action="/results" method="post">
+            <input type="text" name="domain" placeholder="E.g., example.com" required>
+            <button type="submit" class="pulse">Get Info</button>
+        </form>
+    </div>
+
+
+    <div class="features-grid">
+        <div class="feature-item">🔍 WHOIS Lookup! Instantly uncover domain ownership.</div>
+        <div class="feature-item">🧠 DNS Record Fetching! Get A, MX, NS, TXT and more.</div>
+        <div class="feature-item">📚 Learn-as-you-go! Understand what each result means.</div>
+        <div class="feature-item">🎯 IP Geolocation! See where servers call home.</div>
+    </div>
+
+    <div class="summary information lift">
+        <h3>
+            DNSDino is a sleek, beginner-friendly tool that helps you uncover detailed information about any domain — from WHOIS data and DNS records to IP geolocation. It’s built to not only fetch results but also teach you what they mean, making it perfect for learners and cybersecurity enthusiasts alike. Think of it as your personal dino-powered domain detective.
+        </h3>
+    </div>
+    <div class="centralimage">
+        <img class="landscapeimage" src="{{ url_for('static', filename='dinoparty.svg') }}">
+    </div>
+     <div class="grid-2x1 information">
+        <div class="item slide-in">
+            <h3 class="gradient-text">Frequently Asked Questions</h3>
+            <p>
+                <b class="headhighlight">Is this legal?</b><br><br>
+                Yes. DNSDino uses publicly available information. WHOIS data, DNS records, and IPs are open-source intel—like walking past a house and reading the name on the mailbox.
+            </p>
+
+            <p>
+                <b class="headhighlight">Can beginners use this?</b><br><br>
+                Absolutely! DNSDino is designed to be beginner-friendly. Whether you're just starting to learn about domains, DNS records, or cybersecurity, the site provides clear explanations and helpful guidance throughout.
+            </p>
+
+            <p>
+                <b class="headhighlight">Is this site a tool, or a guide?</b><br><br>
+                DNSDino is designed to be both a DNS OSINT tool as well as a guide. 
+            </p>
+        </div>
+
+        <div class="item slide-in">
+            <div>
+                <h3 class="gradient-text">How do I get Started?</h3>
+                <p>If you're reading to begin looking UP DNS information, just enter a domain name in the field above to begin uncovering key details like IP addresses, nameservers, and more! </p>
+    
+                <p>If you've ever wondered what happens behind the scenes when you type a web address, or how websites are tracked and identified you're in the right place.
+                    <br><br>
+                    To start learning, click the button below to begin your journey into the infrastructure that powers the web!
+                </p>
+            </div>
+            <div>
+                <form action="/learn" method="PUT">
+                    <button type="start" class="pulse">Start Learning!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content information">
+            <p>&copy; 2025 DNSDino. All rights reserved.</p>
+
+            <p>Disclaimer: DNSDino is intended for educational and informational purposes only.
+WHOIS data is retrieved from public sources and may be subject to privacy regulations such as GDPR.
+Users are responsible for ensuring that their use of any information obtained through DNSDino complies with applicable laws and ethical standards.
+DNSDino does not store, log, or share any search queries.</p>
+        </div>
+    </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    
+
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+<div class="information readable-container">
+    <h2 class="headhighlight">Glossary</h2>
+
+    <h3 class='headhighlight'>A Record (Address Record)</h3>
+<p>A fundamental DNS record type that maps a domain name to an IPv4 address (e.g., example.com to 192.0.2.1). It's how your browser finds the numerical address of a website.</p>
+
+<h3 class='headhighlight'>AAAA Record (Quad-A Record)</h3>
+<p>Similar to an A record, but it maps a domain name to an IPv6 address (e.g., example.com to 2001:0db8::1). IPv6 is the newer internet protocol designed to handle more addresses.</p>
+
+<h3 class='headhighlight'>AA Flag (Authoritative Answer Flag)</h3>
+<p>A flag in a DNS response that indicates the answering name server is authoritative for the domain in question. This means the server holds the original, official records for that domain.</p>
+
+<h3 class='headhighlight'>Anycast</h3>
+<p>A network addressing and routing method where data is routed to the "nearest" or "best" destination among a group of potential receivers, all sharing the same IP address. This is often used for DNS servers to improve performance and resilience.</p>
+
+<h3 class='headhighlight'>Authoritative Name Server</h3>
+<p>A DNS server that holds the original, definitive DNS records for a particular domain. When you look up a website, a recursive resolver eventually queries an authoritative name server to get the correct information.</p>
+
+<h3 class='headhighlight'>Bandwidth</h3>
+<p>The maximum rate at which data can be transferred over a network connection, typically measured in bits per second (bps). It's essentially how much data "pipe" you have.</p>
+
+<h3 class='headhighlight'>BGP (Border Gateway Protocol)</h3>
+<p>A routing protocol used to exchange routing information between autonomous systems (large networks like ISPs) on the internet. It's the "postal service" of the internet, directing traffic.</p>
+
+<h3 class='headhighlight'>Cache</h3>
+<p>A temporary storage location for data that is frequently accessed. In DNS, resolvers cache query results to speed up future lookups.</p>
+
+<h3 class='headhighlight'>CDN (Content Delivery Network)</h3>
+<p>A geographically distributed network of proxy servers and their data centers. The goal is to provide high availability and performance by distributing the service spatially relative to end-users. Think of it as having copies of website content closer to you.</p>
+
+<h3 class='headhighlight'>CNAME Record (Canonical Name Record)</h3>
+<p>A DNS record that maps one domain name to another (an alias). For example, www.example.com might be a CNAME for example.com, meaning they point to the same underlying resource.</p>
+
+<h3 class='headhighlight'>DNS (Domain Name System)</h3>
+<p>The internet's phonebook. It translates human-readable domain names (like google.com) into machine-readable IP addresses (like 172.217.160.142).</p>
+
+<h3 class='headhighlight'>DNS Resolver (Recursive Resolver)</h3>
+<p>A server that receives DNS queries from client applications (like your web browser) and performs the necessary lookups to find the corresponding IP address. It recursively queries other DNS servers until it gets an answer.</p>
+
+<h3 class='headhighlight'>DNSSEC (Domain Name System Security Extensions)</h3>
+<p>A suite of security extensions that add cryptographic signatures to DNS data, helping to ensure the authenticity and integrity of DNS responses and protect against certain types of attacks.</p>
+
+<h3 class='headhighlight'>Domain Name</h3>
+<p>A human-friendly name used to identify a website or resource on the internet (e.g., example.com).</p>
+
+<h3 class='headhighlight'>Firewall</h3>
+<p>A network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. It acts as a barrier between a trusted internal network and untrusted external networks (like the internet).</p>
+
+<h3 class='headhighlight'>FQDN (Fully Qualified Domain Name)</h3>
+<p>A complete domain name that specifies its exact location in the DNS hierarchy, including the hostname and all parent domains (e.g., www.example.com.). The trailing dot signifies the root of the DNS tree.</p>
+
+<h3 class='headhighlight'>Gateway</h3>
+<p>A network device that connects two different networks and translates protocols between them. Often, your home router acts as a gateway to the internet.</p>
+
+<h3 class='headhighlight'>ICMP (Internet Control Message Protocol)</h3>
+<p>A network layer protocol used by network devices to send error messages and operational information, such as whether a requested service is available or if a host or router can be reached. Ping uses ICMP.</p>
+
+<h3 class='headhighlight'>IP Address (Internet Protocol Address)</h3>
+<p>A unique numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication. It's like a street address for your device on the internet.</p>
+
+<h3 class='headhighlight'>ISP (Internet Service Provider)</h3>
+<p>A company that provides individuals and organizations access to the internet and other related services.</p>
+
+<h3 class='headhighlight'>Latency</h3>
+<p>The delay before a transfer of data begins following an instruction for its transfer. Often referred to as "lag" in gaming.</p>
+
+<h3 class='headhighlight'>Load Balancer</h3>
+<p>A device or software that distributes network traffic across multiple servers to ensure no single server becomes overwhelmed. This improves responsiveness and availability.</p>
+
+<h3 class='headhighlight'>MX Record (Mail Exchange Record)</h3>
+<p>A DNS record that specifies the mail server responsible for accepting email messages on behalf of a domain name. It tells email senders where to deliver mail for your domain.</p>
+
+<h3 class='headhighlight'>Name Server</h3>
+<p>A server that stores DNS records and responds to DNS queries.</p>
+
+<h3 class='headhighlight'>NXT Record (Next Record)</h3>
+<p>An older DNSSEC record type (now deprecated by NSEC and NSEC3) that was used to provide "proof of non-existence" for a DNS record, helping to secure against certain types of attacks.</p>
+
+<h3 class='headhighlight'>Packet</h3>
+<p>A small unit of data transmitted over a network. Data is broken down into packets for efficient transmission and then reassembled at the destination.</p>
+
+<h3 class='headhighlight'>Ping</h3>
+<p>A network utility used to test the reachability of a host on an Internet Protocol (IP) network and to measure the round-trip time for messages sent from the originating host to a destination computer.</p>
+
+<h3 class='headhighlight'>Protocol</h3>
+<p>A set of rules that governs how data is formatted and transmitted over a network. Examples include HTTP, TCP, and IP.</p>
+
+<h3 class='headhighlight'>Recursive Query</h3>
+<p>A type of DNS query where the DNS resolver is asked to provide a complete answer to the query, even if it has to query other DNS servers to get it.</p>
+
+<h3 class='headhighlight'>Root Name Server</h3>
+<p>The highest level of the DNS hierarchy. There are 13 logical root name servers worldwide, which direct queries to the appropriate top-level domain (TLD) name servers.</p>
+
+<h3 class='headhighlight'>Router</h3>
+<p>A networking device that forwards data packets between computer networks. Routers perform the traffic directing functions on the Internet.</p>
+
+<h3 class='headhighlight'>Subnet Mask</h3>
+<p>A 32-bit number that distinguishes the network address and the host address within an IP address. It helps define the boundaries of a local network.</p>
+
+<h3 class='headhighlight'>TCP (Transmission Control Protocol)</h3>
+<p>A core protocol of the internet protocol suite. It provides reliable, ordered, and error-checked delivery of a stream of bytes between applications running on hosts communicating via an IP network.</p>
+
+<h3 class='headhighlight'>TLD (Top-Level Domain)</h3>
+<p>The last segment of a domain name, located after the final dot (e.g., .com, .org, .net, .gov).</p>
+
+<h3 class='headhighlight'>TTL (Time To Live)</h3>
+<p>A value in a DNS record that tells a DNS resolver how long it should cache a record before requesting a fresh copy from the authoritative name server. A shorter TTL means changes propagate faster.</p>
+
+<h3 class='headhighlight'>UDP (User Datagram Protocol)</h3>
+<p>A simpler, faster, and connectionless communication protocol compared to TCP. It's used when speed is more important than guaranteed delivery (e.g., streaming video, online gaming).</p>
+
+<h3 class='headhighlight'>URL (Uniform Resource Locator)</h3>
+<p>A specific type of URI that provides a means of locating a resource on the internet, typically a web page (e.g., https://www.example.com/page).</p>
+
+<h3 class='headhighlight'>VPN (Virtual Private Network)</h3>
+<p>A technology that creates a secure, encrypted connection over a less secure network, such as the internet. It allows users to send and receive data as if their computing devices were directly connected to the private network.</p>
+
+<h3 class='headhighlight'>Wi-Fi</h3>
+<p>A wireless networking technology that allows devices to connect to a network and the internet using radio waves.</p>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

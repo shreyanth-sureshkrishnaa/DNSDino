@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results for {{ domain }} - DNSDino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <h1 class="page-title">DNSDino</h1>
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <a href="/" class="back-link information">Go Back</a>
+
+    <!-- Domain Announcer -->
+    <div class="result-announcer">
+        <h2 class="headhighlight">RESULTS FOR {{ domain.upper() }}</h2>
+    </div>
+
+    <!-- Main Result Layout -->
+    <div class="results">
+        <!-- Left Column -->
+
+            <div class="box-overlay" >
+            <h3 class="section-title"style="color:#00b894">WHOIS Info</h3>
+            <ul>
+                {% for key, value in whois.items() %}
+                <li><strong>{{ key }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+            </div>
+
+            <div class="box-overlay" >
+            <h3 class="section-title" style="color:#00b894">DNS Records</h3>
+            {% for rtype, entries in dns.items() %}
+                <h4>{{ rtype }} Records</h4>
+                <ul>
+                    {% for entry in entries %}
+                    <li>{{ entry }}</li>
+                    {% endfor %}
+                </ul>
+            
+            {% endfor %}
+            </div>
+
+
+
+            <div class="box-overlay" >
+            <h3 style="color:#00b894">Network Intelligence</h3>
+            <p><strong>IP Address:</strong> {{ network_info.ip }}</p>
+
+            <h4>ASN Information</h4>
+            <ul>
+                <li><strong>ASN:</strong> {{ network_info.asn.asn }}</li>
+                <li><strong>Description:</strong> {{ network_info.asn.asn_description }}</li>
+                <li><strong>Network Name:</strong> {{ network_info.asn.network_name }}</li>
+            </ul>
+
+            <h4>IP Geolocation</h4>
+            <ul>
+                <li><strong>Country:</strong> {{ network_info.geolocation.country }}</li>
+                <li><strong>Region:</strong> {{ network_info.geolocation.region }}</li>
+                <li><strong>City:</strong> {{ network_info.geolocation.city }}</li>
+                <li><strong>Organization:</strong> {{ network_info.geolocation.org }}</li>
+                <li><strong>Coordinates:</strong> {{ network_info.geolocation.lat }}, {{ network_info.geolocation.lon }}</li>
+            </ul>
+            </div>
+
+    </div>
+
+
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>

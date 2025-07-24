@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The WHOIS Protocol</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+    <link id="favicon" rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo-light.svg') }}">
+</head>
+<body>
+
+    <div class="centertitle slide-in">
+        <img id="logo" src="{{ url_for('static', filename='logo-light.svg') }}" alt="Logo" class="logo">
+        <div class="dark-mode-toggle">
+            <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+            </label>
+        </div>
+
+        <h1 class="page-title">DNSDino</h1>
+
+        <div class="navbar">
+            <a href="{{url_for('index')}}">Home</a>
+            <a href="{{url_for('help')}}">Help</a>
+            <a href="{{url_for('learn')}}">Learn</a>
+            <a href="{{url_for('glossary')}}">Glossary</a>
+            <a href="{{url_for('credits')}}">Credits</a>
+        </div>
+
+    </div>
+
+    <div style="height: 5px; background: linear-gradient(to right, #00b894, #6c5ce7);"></div>
+    <div class="moduleinfo">
+    <div class="information">
+    <h2>The WHOIS Protocol</h2>
+
+<p>Congratulations on making it this far! Let's shift gears slightly to another crucial internet protocol that helps us understand who owns what on the web: WHOIS. WHOIS is like the internet's property records, telling you who registered a domain name and where to find them.</p>
+
+<h3 class="headhighlight">What is WHOIS?</h3>
+<p>WHOIS (pronounced "who is") is a query and response protocol that is widely used for querying databases that store the registered users of an Internet resource, such as a domain name, an IP address block, or an autonomous system. In simpler terms, WHOIS is a public database that collects all the information for every domain name registration or DNS settings update. It's kind of like a phonebook for websites that tells you who owns a domain, and how to contact them. The International Corporation for Assigned Names and Numbers, that is ICANN, regulates the WHOIS database.</p>
+<p>When a person or organization registers a domain name, they are required to provide contact information to their domain registrar. This information is then stored in a WHOIS database and made publicly accessible via the WHOIS protocol.</p>
+
+<h3 class="headhighlight">Who is WHOIS for?</h3>
+<p>The WHOIS protocol serves several important functions and is used by various parties. Let's take a look at three main parties: Registrants, Regisrars and most importantly, the Public. That's us!</p>
+<ul>
+    <li><strong>Registrants:</strong> These are the individuals, groups or organizations who register and own domain names. They are required to provide contact information for their domain.</li><br>
+    <li><strong>Registrars:</strong> These are the companies (like GoDaddy, Namecheap, etc.) accredited by ICANN (Internet Corporation for Assigned Names and Numbers) to sell and manage domain names. In this case, the companies maintain the WHOIS data for the domains they register.</li><br>
+    <li><strong>The Public:</strong> Anyone with an internet connection can perform a WHOIS lookup. This public accessibility is fundamental to the internet's committment to transparency and accountability.</li><br>
+</ul>
+<p>
+    Here's why WHOIS info is so important:
+</p>
+<ul>
+    <li>Helps identify who is responsible for a website or online service for legal and security purposes.</li><br>
+    <li>Law enforcement and cybersecurity professionals use WHOIS information to track down individuals involved in phishing, spamming, malware distribution, and other malicious activities. An essential resouce for keeping the internet safe!</li><br>
+    <li>It provides exceptionally critical information for resolving disputes over domain name ownership.</li><br>
+    <li>Businesses might use it to identify potential partners or competitors, or even to research domain ownership for acquisition. The domain cars.com was sold for a staggering $872 million!</li><br>
+    <li>It can help identify the administrative or technical contacts for a domain if there are issues found in the site.</li><br>
+</ul>
+<p>It's important to note that the exact fields and the level of detail can vary depending on the domain's Top-Level Domain (TLD) and privacy settings.</p>
+
+<h3 class="headhighlight">Understanding a WHOIS Lookup Result</h3>
+<p>When you perform a WHOIS lookup for a domain (e.g., <code>dnsdino.com</code>), you'll typically get a detailed report that includes:</p>
+<ul>
+    <li><strong>Registrant Contact Information:</strong> This is the core of the WHOIS record. It usually includes the name, organization, mailing address, email address, and phone number of the domain owner.</li>
+    <li><strong>Administrative Contact Information:</strong> Details for the person or entity responsible for administrative matters related to the domain.</li>
+    <li><strong>Technical Contact Information:</strong> Details for the person or entity responsible for technical issues with the domain (e.g., DNS configuration).</li>
+    <li><strong>Registrar Information:</strong> The name of the domain registrar (e.g., "GoDaddy.com, LLC").</li>
+    <li><strong>Registration Dates:</strong>
+        <ul>
+            <li><strong>Creation Date:</strong> When the domain was first registered.</li>
+            <li><strong>Expiration Date:</strong> When the domain registration is set to expire.</li>
+            <li><strong>Updated Date:</strong> When the WHOIS record was last modified.</li>
+        </ul>
+    </li>
+    <li><strong>Name Servers:</strong> A list of the authoritative name servers for the domain (e.g., <code>ns1.example.com</code>, <code>ns2.example.com</code>). This links back to our DNS modules!</li>
+    <li><strong>Domain Status:</strong> Indicates the current status of the domain (e.g., "clientTransferProhibited," "ok").</li>
+</ul>
+<p>It's important to note that the exact fields and the level of detail can vary depending on the domain's Top-Level Domain (TLD) and privacy settings.</p>
+
+<h3 class="headhighlight">Privacy and the WHOIS Protocol</h3>
+<p>While the public nature of WHOIS is beneficial for accountability, we find that this dedication to accountability is a double edged sword. For individual domain owners, having their personal contact information publicly available can lead to spam, telemarketing calls, and even identity theft.</p>
+<p>To address these concerns, several mechanisms have emerged:</p>
+<ul>
+    <li>Many domain registrars offer "WHOIS privacy" or "proxy" services. When you opt for this, the registrar or a third-party proxy service replaces your personal contact information in the public WHOIS record with their own generic information. They then sift through inquiries and forward legitimate ones to you. This allows you to maintain privacy while still fulfilling transparency requirements.</li>
+    <li>=This European Union regulation massively impacted WHOIS. Under GDPR, personal data of EU residents must be protected. It's one of the best personal internet privacy regulations around! As a result, for domains registered by EU residents, registrars often redact or anonymize personal contact information in the public WHOIS record by default, making it less transparent than before. Other regions are adopting similar privacy regulations.</li>
+</ul>
+<p>These privacy measures aim to balance the need for public accountability with individual privacy rights.</p>
+<img src="static/gdpr.png" style="display: block; margin: auto; border: 5px solid #00b894;" height="600px" width="700px">
+<h3 class="headhighlight">WHOIS as a Troubleshooting Tool</h3>
+<p>Beyond its primary role as a public directory, WHOIS can be a valuable tool for troubleshooting domain-related issues:</p>
+<ul>
+    <li>If you're having trouble with a domain, a WHOIS lookup can confirm if you or your organization are indeed listed as the registrant.</li><br>
+    <li>Accidentally letting a domain expire can lead to website downtime. A WHOIS check can remind you of the expiration date, and keep your website up and running!.</li><br>
+    <li>If your website isn't loading, checking the WHOIS record to ensure the correct name servers are listed is a crucial first step. If they're pointing to old or incorrect name servers, your DNS lookups will fail.</li><br>
+    <li>If you need to contact the administrator of a domain for legal, technical, or business reasons, WHOIS provides the necessary contact details (if not protected by privacy services).</li><br>
+    <li>If you're receiving spam or notice malicious activity from a particular domain, a WHOIS lookup can help identify the responsible party or their registrar, allowing you to report the abuse.</li><br>
+</ul>
+<p>In essence, WHOIS provides a transparent layer to the internet's infrastructure, helping to keep domain owners accountable and offering a practical tool for various administrative and troubleshooting tasks!</p>
+    
+    </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+</body>
+</html>
